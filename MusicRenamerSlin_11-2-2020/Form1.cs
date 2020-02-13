@@ -21,7 +21,7 @@ namespace MusicRenamerSlin_11_2_2020
             lsbSelectedOrderSlin.AllowDrop = true;
         }
 
-        #region Drag And Drop
+        #region Name Order List
         private void selectedListBoxSlin_MouseDown(object sender, MouseEventArgs e)
         {
             orderListSlin.MoveFromListBoxSlin((ListBox)sender);

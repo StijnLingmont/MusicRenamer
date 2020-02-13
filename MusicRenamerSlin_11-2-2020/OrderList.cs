@@ -11,8 +11,8 @@ namespace MusicRenamerSlin_11_2_2020
      */
     public class OrderList
     {
-        public ListBox movingFromSlin { get; set; }
-        public ListBox movingToSlin { get; set; }
+        private ListBox movingFromSlin { get; set; }
+        private ListBox movingToSlin { get; set; }
 
         //Give the effect of dragging an item
         public void MoveFromListBoxSlin(ListBox m_movingListBoxSlin)
@@ -26,20 +26,20 @@ namespace MusicRenamerSlin_11_2_2020
         }
 
         //Give the effect of entering a drop zone
-        public void EnterDropRegionSlin(ListBox c_droppingListBoxSlin,DragEventArgs c_enterRegionEventSlin)
+        public void EnterDropRegionSlin(ListBox m_droppingListBoxSlin,DragEventArgs m_enterRegionEventSlin)
         {
-            this.movingToSlin = c_droppingListBoxSlin;
+            this.movingToSlin = m_droppingListBoxSlin;
 
-            c_enterRegionEventSlin.Effect = DragDropEffects.Move;
+            m_enterRegionEventSlin.Effect = DragDropEffects.Move;
         }
 
 
         //Add the item in the list it is dropped in
-        public void DropInBoxSlin(DragEventArgs c_dragEventSlin)
+        public void DropInBoxSlin(DragEventArgs m_dragEventSlin)
         {
-            Point point = this.movingToSlin.PointToClient(new Point(c_dragEventSlin.X, c_dragEventSlin.Y));
+            Point point = this.movingToSlin.PointToClient(new Point(m_dragEventSlin.X, m_dragEventSlin.Y));
             int index = this.movingToSlin.IndexFromPoint(point);
-            object data = c_dragEventSlin.Data.GetData(typeof(String));
+            object data = m_dragEventSlin.Data.GetData(typeof(String));
 
             //Removing previous item
             if (this.movingFromSlin != null)
