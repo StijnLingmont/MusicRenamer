@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -15,48 +16,54 @@ namespace MusicRenamerSlin_11_2_2020
         private ListBox movingToSlin { get; set; }
 
         //Give the effect of dragging an item
-        public void MoveFromListBoxSlin(ListBox m_movingListBoxSlin)
+        public void MoveFromListBoxSlin(ListBox a_movingListBoxSlin)
         {
-            this.movingFromSlin = m_movingListBoxSlin;
+            this.movingFromSlin = a_movingListBoxSlin;
 
-            if (m_movingListBoxSlin.SelectedItem != null)
+            if (a_movingListBoxSlin.SelectedItem != null)
             {
-                m_movingListBoxSlin.DoDragDrop(m_movingListBoxSlin.SelectedItem, DragDropEffects.Move);
+                a_movingListBoxSlin.DoDragDrop(a_movingListBoxSlin.SelectedItem, DragDropEffects.Move);
             }
         }
 
         //Give the effect of entering a drop zone
-        public void EnterDropRegionSlin(ListBox m_droppingListBoxSlin,DragEventArgs m_enterRegionEventSlin)
+        public void EnterDropRegionSlin(ListBox a_droppingListBoxSlin, DragEventArgs a_enterRegionEventSlin)
         {
-            this.movingToSlin = m_droppingListBoxSlin;
+            this.movingToSlin = a_droppingListBoxSlin;
 
-            m_enterRegionEventSlin.Effect = DragDropEffects.Move;
+            a_enterRegionEventSlin.Effect = DragDropEffects.Move;
         }
 
-
         //Add the item in the list it is dropped in
-        public void DropInBoxSlin(DragEventArgs m_dragEventSlin)
+        public void DropInBoxSlin(DragEventArgs a_dragEventSlin)
         {
-            Point point = this.movingToSlin.PointToClient(new Point(m_dragEventSlin.X, m_dragEventSlin.Y));
-            int index = this.movingToSlin.IndexFromPoint(point);
-            object data = m_dragEventSlin.Data.GetData(typeof(String));
+            Point m_dropInPointSlin = this.movingToSlin.PointToClient(new Point(a_dragEventSlin.X, a_dragEventSlin.Y));
+            int m_indexOfBoxSlin = this.movingToSlin.IndexFromPoint(m_dropInPointSlin);
+            object m_draggedDataSlin = a_dragEventSlin.Data.GetData(typeof(String));
 
             //Removing previous item
             if (this.movingFromSlin != null)
-                movingFromSlin.Items.Remove(data);
+                movingFromSlin.Items.Remove(m_draggedDataSlin);
             else
-                this.movingToSlin.Items.Remove(data);
+                this.movingToSlin.Items.Remove(m_draggedDataSlin);
 
             //When you drop the item out of the region with already existing existing items.
-            if (index < 0)
+            if (m_indexOfBoxSlin < 0)
             {
                 if (this.movingToSlin.Items.Count == 0)
-                    index = 0;
+                    m_indexOfBoxSlin = 0;
                 else
-                    index = this.movingToSlin.Items.Count;
+                    m_indexOfBoxSlin = this.movingToSlin.Items.Count;
             }
 
-            this.movingToSlin.Items.Insert(index, data); //Insert new Item
+            this.movingToSlin.Items.Insert(m_indexOfBoxSlin, m_draggedDataSlin); //Insert new Item
+        }
+
+        public static List<string> GetSelectedItemsSlin()
+        {
+            List<string> m_orderListItemsSlin = new List<string>();
+            return m_orderListItemsSlin;
         }
     }
+   
 }

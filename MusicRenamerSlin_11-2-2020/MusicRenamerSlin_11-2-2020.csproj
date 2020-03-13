@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioFileListSlin.cs" />
+    <Compile Include="AudioFileSlin.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

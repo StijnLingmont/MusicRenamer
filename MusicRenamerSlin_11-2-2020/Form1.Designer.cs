@@ -43,6 +43,8 @@
             this.btnSelectMusicSlin = new System.Windows.Forms.Button();
             this.grbLogSlin = new System.Windows.Forms.GroupBox();
             this.rtbLogSlin = new System.Windows.Forms.RichTextBox();
+            this.lblUnselectedListSlin = new System.Windows.Forms.Label();
+            this.lnlSelectedListSlin = new System.Windows.Forms.Label();
             this.grbOptionsSlin.SuspendLayout();
             this.grbSelectMusicSlin.SuspendLayout();
             this.grbLogSlin.SuspendLayout();
@@ -50,6 +52,8 @@
             // 
             // grbOptionsSlin
             // 
+            this.grbOptionsSlin.Controls.Add(this.lnlSelectedListSlin);
+            this.grbOptionsSlin.Controls.Add(this.lblUnselectedListSlin);
             this.grbOptionsSlin.Controls.Add(this.lblUnsuccesRenamedSlin);
             this.grbOptionsSlin.Controls.Add(this.lblSuccesRenamedSlin);
             this.grbOptionsSlin.Controls.Add(this.lblSelectRenameOrderSlin);
@@ -96,7 +100,7 @@
             // lsbSelectedOrderSlin
             // 
             this.lsbSelectedOrderSlin.FormattingEnabled = true;
-            this.lsbSelectedOrderSlin.Location = new System.Drawing.Point(128, 119);
+            this.lsbSelectedOrderSlin.Location = new System.Drawing.Point(128, 134);
             this.lsbSelectedOrderSlin.Name = "lsbSelectedOrderSlin";
             this.lsbSelectedOrderSlin.Size = new System.Drawing.Size(110, 251);
             this.lsbSelectedOrderSlin.TabIndex = 5;
@@ -117,7 +121,7 @@
             "Genre",
             "Nummer",
             "Uitgever"});
-            this.lsbUnselectedOrderSlin.Location = new System.Drawing.Point(6, 119);
+            this.lsbUnselectedOrderSlin.Location = new System.Drawing.Point(6, 133);
             this.lsbUnselectedOrderSlin.Name = "lsbUnselectedOrderSlin";
             this.lsbUnselectedOrderSlin.Size = new System.Drawing.Size(110, 251);
             this.lsbUnselectedOrderSlin.TabIndex = 4;
@@ -207,6 +211,24 @@
             this.rtbLogSlin.TabIndex = 0;
             this.rtbLogSlin.Text = "\n";
             // 
+            // lblUnselectedListSlin
+            // 
+            this.lblUnselectedListSlin.AutoSize = true;
+            this.lblUnselectedListSlin.Location = new System.Drawing.Point(7, 117);
+            this.lblUnselectedListSlin.Name = "lblUnselectedListSlin";
+            this.lblUnselectedListSlin.Size = new System.Drawing.Size(88, 13);
+            this.lblUnselectedListSlin.TabIndex = 8;
+            this.lblUnselectedListSlin.Text = "Unselected items";
+            // 
+            // lnlSelectedListSlin
+            // 
+            this.lnlSelectedListSlin.AutoSize = true;
+            this.lnlSelectedListSlin.Location = new System.Drawing.Point(125, 116);
+            this.lnlSelectedListSlin.Name = "lnlSelectedListSlin";
+            this.lnlSelectedListSlin.Size = new System.Drawing.Size(76, 13);
+            this.lnlSelectedListSlin.TabIndex = 9;
+            this.lnlSelectedListSlin.Text = "Selected items";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +267,8 @@
         private System.Windows.Forms.Label lblSuccesRenamedSlin;
         private System.Windows.Forms.GroupBox grbLogSlin;
         private System.Windows.Forms.RichTextBox rtbLogSlin;
+        private System.Windows.Forms.Label lnlSelectedListSlin;
+        private System.Windows.Forms.Label lblUnselectedListSlin;
     }
 }
 
