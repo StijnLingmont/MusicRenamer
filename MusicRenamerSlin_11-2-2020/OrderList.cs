@@ -13,6 +13,7 @@ namespace MusicRenamerSlin_11_2_2020
     public class OrderList
     {
         private ListBox movingFromSlin { get; set; }
+
         private ListBox movingToSlin { get; set; }
 
         //Give the effect of dragging an item
@@ -62,6 +63,7 @@ namespace MusicRenamerSlin_11_2_2020
         public static List<string> GetSelectedItemsSlin()
         {
             List<string> m_orderListItemsSlin = new List<string>();
+
             return m_orderListItemsSlin;
         }
     }

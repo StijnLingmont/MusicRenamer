@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.grbOptionsSlin = new System.Windows.Forms.GroupBox();
+            this.lnlSelectedListSlin = new System.Windows.Forms.Label();
+            this.lblUnselectedListSlin = new System.Windows.Forms.Label();
             this.lblUnsuccesRenamedSlin = new System.Windows.Forms.Label();
             this.lblSuccesRenamedSlin = new System.Windows.Forms.Label();
             this.lblSelectRenameOrderSlin = new System.Windows.Forms.Label();
@@ -43,8 +45,6 @@
             this.btnSelectMusicSlin = new System.Windows.Forms.Button();
             this.grbLogSlin = new System.Windows.Forms.GroupBox();
             this.rtbLogSlin = new System.Windows.Forms.RichTextBox();
-            this.lblUnselectedListSlin = new System.Windows.Forms.Label();
-            this.lnlSelectedListSlin = new System.Windows.Forms.Label();
             this.grbOptionsSlin.SuspendLayout();
             this.grbSelectMusicSlin.SuspendLayout();
             this.grbLogSlin.SuspendLayout();
@@ -66,6 +66,24 @@
             this.grbOptionsSlin.TabIndex = 0;
             this.grbOptionsSlin.TabStop = false;
             this.grbOptionsSlin.Text = "Options";
+            // 
+            // lnlSelectedListSlin
+            // 
+            this.lnlSelectedListSlin.AutoSize = true;
+            this.lnlSelectedListSlin.Location = new System.Drawing.Point(125, 116);
+            this.lnlSelectedListSlin.Name = "lnlSelectedListSlin";
+            this.lnlSelectedListSlin.Size = new System.Drawing.Size(76, 13);
+            this.lnlSelectedListSlin.TabIndex = 9;
+            this.lnlSelectedListSlin.Text = "Selected items";
+            // 
+            // lblUnselectedListSlin
+            // 
+            this.lblUnselectedListSlin.AutoSize = true;
+            this.lblUnselectedListSlin.Location = new System.Drawing.Point(7, 117);
+            this.lblUnselectedListSlin.Name = "lblUnselectedListSlin";
+            this.lblUnselectedListSlin.Size = new System.Drawing.Size(88, 13);
+            this.lblUnselectedListSlin.TabIndex = 8;
+            this.lblUnselectedListSlin.Text = "Unselected items";
             // 
             // lblUnsuccesRenamedSlin
             // 
@@ -113,14 +131,10 @@
             this.lsbUnselectedOrderSlin.FormattingEnabled = true;
             this.lsbUnselectedOrderSlin.Items.AddRange(new object[] {
             "Titel",
-            "Album",
             "Artiest",
-            "Ondertitel",
             "Jaar",
             "Afspeelduur",
-            "Genre",
-            "Nummer",
-            "Uitgever"});
+            "Genre"});
             this.lsbUnselectedOrderSlin.Location = new System.Drawing.Point(6, 133);
             this.lsbUnselectedOrderSlin.Name = "lsbUnselectedOrderSlin";
             this.lsbUnselectedOrderSlin.Size = new System.Drawing.Size(110, 251);
@@ -138,6 +152,7 @@
             this.btnRenameSongsSlin.TabIndex = 0;
             this.btnRenameSongsSlin.Text = "Rename List";
             this.btnRenameSongsSlin.UseVisualStyleBackColor = true;
+            this.btnRenameSongsSlin.Click += new System.EventHandler(this.btnRenameSongsSlin_Click);
             // 
             // grbSelectMusicSlin
             // 
@@ -161,6 +176,7 @@
             this.btnRemoveSongSlin.TabIndex = 3;
             this.btnRemoveSongSlin.Text = "Remove Selected Song";
             this.btnRemoveSongSlin.UseVisualStyleBackColor = true;
+            this.btnRemoveSongSlin.Click += new System.EventHandler(this.btnRemoveSongSlin_Click);
             // 
             // lsbSelectedMusicSlin
             // 
@@ -189,6 +205,7 @@
             this.btnSelectMusicSlin.TabIndex = 0;
             this.btnSelectMusicSlin.Text = "Select Music";
             this.btnSelectMusicSlin.UseVisualStyleBackColor = true;
+            this.btnSelectMusicSlin.Click += new System.EventHandler(this.btnSelectMusicSlin_Click);
             // 
             // grbLogSlin
             // 
@@ -209,25 +226,7 @@
             this.rtbLogSlin.ReadOnly = true;
             this.rtbLogSlin.Size = new System.Drawing.Size(188, 407);
             this.rtbLogSlin.TabIndex = 0;
-            this.rtbLogSlin.Text = "\n";
-            // 
-            // lblUnselectedListSlin
-            // 
-            this.lblUnselectedListSlin.AutoSize = true;
-            this.lblUnselectedListSlin.Location = new System.Drawing.Point(7, 117);
-            this.lblUnselectedListSlin.Name = "lblUnselectedListSlin";
-            this.lblUnselectedListSlin.Size = new System.Drawing.Size(88, 13);
-            this.lblUnselectedListSlin.TabIndex = 8;
-            this.lblUnselectedListSlin.Text = "Unselected items";
-            // 
-            // lnlSelectedListSlin
-            // 
-            this.lnlSelectedListSlin.AutoSize = true;
-            this.lnlSelectedListSlin.Location = new System.Drawing.Point(125, 116);
-            this.lnlSelectedListSlin.Name = "lnlSelectedListSlin";
-            this.lnlSelectedListSlin.Size = new System.Drawing.Size(76, 13);
-            this.lnlSelectedListSlin.TabIndex = 9;
-            this.lnlSelectedListSlin.Text = "Selected items";
+            this.rtbLogSlin.Text = "";
             // 
             // Main
             // 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -14,6 +15,7 @@ namespace MusicRenamerSlin_11_2_2020
     public partial class Main : Form
     {
         OrderList orderListSlin = new OrderList();
+        AudioFileListSlin audioListSlin = new AudioFileListSlin();
         public Main()
         {
             InitializeComponent();
@@ -37,5 +39,46 @@ namespace MusicRenamerSlin_11_2_2020
             orderListSlin.DropInBoxSlin(e);
         }
         #endregion
+
+        private void btnSelectMusicSlin_Click(object sender, EventArgs e)
+        {
+            LoggerSlin("Selecting Music...");
+
+            audioListSlin.SelectFilesSlin();
+            RenewSelectedListSlin();
+        }
+
+        private void btnRemoveSongSlin_Click(object sender, EventArgs e)
+        {
+            audioListSlin.RemoveFileSlin(lsbSelectedMusicSlin);
+            RenewSelectedListSlin();
+        }
+
+        private void RenewSelectedListSlin()
+        {
+            LoggerSlin("Updating Music List...");
+
+            lsbSelectedMusicSlin.Items.Clear();
+
+            //Add all the items from the begin of the list to the listbox
+            foreach (AudioFileSlin audioFile in audioListSlin.audioFilesSlin)
+            {
+                lsbSelectedMusicSlin.Items.Add(Path.GetFileNameWithoutExtension(audioFile.GetNewAudioFileNameSlin()));
+            }
+
+            //Give the amount of selected Items
+            lblMusicSelectedSlin.Text = "You selected " + audioListSlin.audioFilesSlin.Count + " songs";
+            LoggerSlin(audioListSlin.audioFilesSlin.Count + " Selected music");
+        }
+
+        private void LoggerSlin(String a_loggingStringSlin)
+        {
+            rtbLogSlin.AppendText(a_loggingStringSlin + "\n");
+        }
+
+        private void btnRenameSongsSlin_Click(object sender, EventArgs e)
+        {
+            audioListSlin.RenameFilesSlin();
+        }
     }
 }
