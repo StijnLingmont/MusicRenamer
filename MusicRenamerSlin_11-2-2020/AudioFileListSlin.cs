@@ -106,20 +106,23 @@ namespace MusicRenamerSlin_11_2_2020
             {
                 var m_dataRetrievedSlin = tfile.Tag.GetType().GetProperty(m_orderItemSlin).GetValue(tfile.Tag, null);
 
-                if(m_dataRetrievedSlin == null)
+                // Check which data is given and execute the right commans for thats data
+                if (m_dataRetrievedSlin == null)
                 {
                     a_audioFileSlin.tagDataFromFilesSlin.Add(null);
                 } 
-                else if(m_dataRetrievedSlin.GetType().ToString() == "System.String")
+                else if(m_dataRetrievedSlin.GetType().ToString() == "System.String" || m_dataRetrievedSlin.GetType().ToString() == "System.UInt32")
                 {
                     a_audioFileSlin.tagDataFromFilesSlin.Add(m_dataRetrievedSlin.ToString());
                 }
                 else if(m_dataRetrievedSlin.GetType().ToString() == "System.String[]")
                 {
-                    string[] m_dataRetrievedFromArraySlin = (string[])m_dataRetrievedSlin;
+                    string[] m_dataRetrievedFromArraySlin = (string[])m_dataRetrievedSlin; //Get the retrieved data
 
+                    //Check if the array is filled
                     if(m_dataRetrievedFromArraySlin.Length > 0)
                     {
+                        m_dataRetrievedFromArraySlin[0] = m_dataRetrievedFromArraySlin[0].Replace("/", ";");
                         a_audioFileSlin.tagDataFromFilesSlin.Add(m_dataRetrievedFromArraySlin[0]);
                     } else
                     {
