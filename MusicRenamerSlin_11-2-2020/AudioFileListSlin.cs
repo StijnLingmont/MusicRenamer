@@ -54,6 +54,17 @@ namespace MusicRenamerSlin_11_2_2020
             return m_valueExists;
         }
 
+        private bool CheckRenameRequirementsSlin(AudioFileSlin a_audioFileSlin)
+        {
+            // Check if all the data is filled in. If not then a Music Recognision API is required.
+            if (a_audioFileSlin.tagDataFromFilesSlin.Contains(null))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public void RenameFilesSlin(List<string> a_orderListSlin)
         {
             foreach(var m_fileSlin in audioFilesSlin)
@@ -78,19 +89,6 @@ namespace MusicRenamerSlin_11_2_2020
             }
         }
 
-        private bool CheckRenameRequirementsSlin(AudioFileSlin a_audioFileSlin)
-        {
-            //TODO: Check if File still exists
-
-            //TODO: Check if all the data is filled in. If not then a Music Recognision API is required.
-            if(a_audioFileSlin.tagDataFromFilesSlin.Contains(null))
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         private void MusicRecognisionSlin()
         {
             MessageBox.Show("Music Recognision will work!");
@@ -98,42 +96,51 @@ namespace MusicRenamerSlin_11_2_2020
 
         private void Id3TagReaderSlin(AudioFileSlin a_audioFileSlin, List<string> a_orderListSlin)
         {
-            string m_audioFilePathSlin = a_audioFileSlin.GetNewAudioFileNameSlin(); //get the audioFilePath
-
-            var tfile = TagLib.File.Create(m_audioFilePathSlin);
-
-            foreach (string m_orderItemSlin in a_orderListSlin)
+            try
             {
-                var m_dataRetrievedSlin = tfile.Tag.GetType().GetProperty(m_orderItemSlin).GetValue(tfile.Tag, null);
+                string m_audioFilePathSlin = a_audioFileSlin.GetNewAudioFileNameSlin(); //get the audioFilePath
 
-                // Check which data is given and execute the right commans for thats data
-                if (m_dataRetrievedSlin == null)
-                {
-                    a_audioFileSlin.tagDataFromFilesSlin.Add(null);
-                } 
-                else if(m_dataRetrievedSlin.GetType().ToString() == "System.String" || m_dataRetrievedSlin.GetType().ToString() == "System.UInt32")
-                {
-                    a_audioFileSlin.tagDataFromFilesSlin.Add(m_dataRetrievedSlin.ToString());
-                }
-                else if(m_dataRetrievedSlin.GetType().ToString() == "System.String[]")
-                {
-                    string[] m_dataRetrievedFromArraySlin = (string[])m_dataRetrievedSlin; //Get the retrieved data
+                var tfile = TagLib.File.Create(m_audioFilePathSlin);
 
-                    //Check if the array is filled
-                    if(m_dataRetrievedFromArraySlin.Length > 0)
-                    {
-                        m_dataRetrievedFromArraySlin[0] = m_dataRetrievedFromArraySlin[0].Replace("/", ";");
-                        a_audioFileSlin.tagDataFromFilesSlin.Add(m_dataRetrievedFromArraySlin[0]);
-                    } else
+                foreach (string m_orderItemSlin in a_orderListSlin)
+                {
+                    var m_dataRetrievedSlin = tfile.Tag.GetType().GetProperty(m_orderItemSlin).GetValue(tfile.Tag, null);
+
+                    // Check which data is given and execute the right commans for thats data
+                    if (m_dataRetrievedSlin == null)
                     {
                         a_audioFileSlin.tagDataFromFilesSlin.Add(null);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("The data from the file is unvalid");
+                    else if (m_dataRetrievedSlin.GetType().ToString() == "System.String" || m_dataRetrievedSlin.GetType().ToString() == "System.UInt32")
+                    {
+                        a_audioFileSlin.tagDataFromFilesSlin.Add(m_dataRetrievedSlin.ToString());
+                    }
+                    else if (m_dataRetrievedSlin.GetType().ToString() == "System.String[]")
+                    {
+                        string[] m_dataRetrievedFromArraySlin = (string[])m_dataRetrievedSlin; //Get the retrieved data
+
+                        //Check if the array is filled
+                        if (m_dataRetrievedFromArraySlin.Length > 0)
+                        {
+                            m_dataRetrievedFromArraySlin[0] = m_dataRetrievedFromArraySlin[0].Replace("/", ";");
+                            a_audioFileSlin.tagDataFromFilesSlin.Add(m_dataRetrievedFromArraySlin[0]);
+                        }
+                        else
+                        {
+                            a_audioFileSlin.tagDataFromFilesSlin.Add(null);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("The data from the file is unvalid");
+                    }
                 }
             }
+            catch
+            {
+                MessageBox.Show("Sorry! Something went wrong! Contact the company for more info.");
+            }
+
         }
 
         private string RenameStringSlin(List<string> a_tagDataFromFileSlin)
