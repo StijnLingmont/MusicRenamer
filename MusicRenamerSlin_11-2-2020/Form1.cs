@@ -14,11 +14,14 @@ namespace MusicRenamerSlin_11_2_2020
 {
     public partial class Main : Form
     {
-        OrderList orderListSlin = new OrderList();
+        OrderList orderListSlin;
         AudioFileListSlin audioListSlin = new AudioFileListSlin();
         public Main()
         {
             InitializeComponent();
+
+            orderListSlin = new OrderList(this);
+
             lsbUnselectedOrderSlin.AllowDrop = true;
             lsbSelectedOrderSlin.AllowDrop = true;
         }
@@ -50,7 +53,7 @@ namespace MusicRenamerSlin_11_2_2020
 
         private void btnRemoveSongSlin_Click(object sender, EventArgs e)
         {
-            audioListSlin.RemoveFileSlin(lsbSelectedMusicSlin);
+            audioListSlin.RemoveFileSlin(lsbSelectedMusicSlin.SelectedIndex);
             RenewSelectedListSlin();
         }
 
@@ -78,7 +81,8 @@ namespace MusicRenamerSlin_11_2_2020
 
         private void btnRenameSongsSlin_Click(object sender, EventArgs e)
         {
-            audioListSlin.RenameFilesSlin();
+            List<string> m_orderListItemsSlin = orderListSlin.GetSelectedItemsSlin();
+            audioListSlin.RenameFilesSlin(m_orderListItemsSlin);
         }
     }
 }

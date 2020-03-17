@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MusicRenamerSlin_11_2_2020.AudioFileListSlin">
-    <Position X="0.5" Y="0.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAQAACAgAAAAAAAAAAIACAAAAAQAAIAEACAAAAAAAA=</HashCode>
-      <FileName>AudioFileListSlin.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="MusicRenamerSlin_11_2_2020.AudioFileSlin">
     <Position X="3.25" Y="0.5" Width="2.25" />
     <TypeIdentifier>
@@ -17,8 +10,15 @@
   <Class Name="MusicRenamerSlin_11_2_2020.OrderList">
     <Position X="5.75" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAgIQAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAgIQAAAAAAAAAAAAAAAAIAAAAAAQAgAAAAAA=</HashCode>
       <FileName>OrderList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicRenamerSlin_11_2_2020.AudioFileListSlin">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAACAgAAAAAAAAAAIACAAAAAQAAIAEACAAAAAAAA=</HashCode>
+      <FileName>AudioFileListSlin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -130,11 +130,11 @@
             // 
             this.lsbUnselectedOrderSlin.FormattingEnabled = true;
             this.lsbUnselectedOrderSlin.Items.AddRange(new object[] {
-            "Titel",
-            "Artiest",
-            "Jaar",
-            "Afspeelduur",
-            "Genre"});
+            "Title",
+            "Artists",
+            "Year",
+            "Genres",
+            "Durartion"});
             this.lsbUnselectedOrderSlin.Location = new System.Drawing.Point(6, 133);
             this.lsbUnselectedOrderSlin.Name = "lsbUnselectedOrderSlin";
             this.lsbUnselectedOrderSlin.Size = new System.Drawing.Size(110, 251);
@@ -260,7 +260,6 @@
         private System.Windows.Forms.Button btnRenameSongsSlin;
         private System.Windows.Forms.Button btnRemoveSongSlin;
         private System.Windows.Forms.ListBox lsbUnselectedOrderSlin;
-        private System.Windows.Forms.ListBox lsbSelectedOrderSlin;
         private System.Windows.Forms.Label lblSelectRenameOrderSlin;
         private System.Windows.Forms.Label lblUnsuccesRenamedSlin;
         private System.Windows.Forms.Label lblSuccesRenamedSlin;
@@ -268,6 +267,7 @@
         private System.Windows.Forms.RichTextBox rtbLogSlin;
         private System.Windows.Forms.Label lnlSelectedListSlin;
         private System.Windows.Forms.Label lblUnselectedListSlin;
+        public System.Windows.Forms.ListBox lsbSelectedOrderSlin;
     }
 }
 

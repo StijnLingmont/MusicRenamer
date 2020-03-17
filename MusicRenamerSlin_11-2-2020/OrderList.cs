@@ -16,6 +16,13 @@ namespace MusicRenamerSlin_11_2_2020
 
         private ListBox movingToSlin { get; set; }
 
+        private Main mainFormSlin;
+
+        public OrderList(Main a_mainFormSlin)
+        {
+            this.mainFormSlin = a_mainFormSlin;
+        }
+
         //Give the effect of dragging an item
         public void MoveFromListBoxSlin(ListBox a_movingListBoxSlin)
         {
@@ -60,9 +67,14 @@ namespace MusicRenamerSlin_11_2_2020
             this.movingToSlin.Items.Insert(m_indexOfBoxSlin, m_draggedDataSlin); //Insert new Item
         }
 
-        public static List<string> GetSelectedItemsSlin()
+        public List<string> GetSelectedItemsSlin()
         {
             List<string> m_orderListItemsSlin = new List<string>();
+
+            foreach(string m_selectedItemSlin in mainFormSlin.lsbSelectedOrderSlin.Items)
+            {
+                m_orderListItemsSlin.Add(m_selectedItemSlin);
+            }
 
             return m_orderListItemsSlin;
         }
