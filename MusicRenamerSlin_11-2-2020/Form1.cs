@@ -15,12 +15,13 @@ namespace MusicRenamerSlin_11_2_2020
     public partial class Main : Form
     {
         OrderList orderListSlin;
-        AudioFileListSlin audioListSlin = new AudioFileListSlin();
+        AudioFileListSlin audioListSlin;
         public Main()
         {
             InitializeComponent();
 
             orderListSlin = new OrderList(this);
+            audioListSlin = new AudioFileListSlin(this);
 
             lsbUnselectedOrderSlin.AllowDrop = true;
             lsbSelectedOrderSlin.AllowDrop = true;

@@ -18,9 +18,12 @@ namespace MusicRenamerSlin_11_2_2020
     {
         public List<AudioFileSlin> audioFilesSlin { get; set; }
 
-        public AudioFileListSlin()
+        public Main mainFormSlin;
+
+        public AudioFileListSlin(Main a_mainFormSlin)
         {
             audioFilesSlin = new List<AudioFileSlin>();
+            mainFormSlin = a_mainFormSlin;
         }
 
         public void SelectFilesSlin()
@@ -33,10 +36,13 @@ namespace MusicRenamerSlin_11_2_2020
 
                 if (m_musicFileDialogSlin.ShowDialog() == DialogResult.OK)
                 {
+                    mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_musicFileDialogSlin.FileNames.Length * 10;
+
                     // Read the files
                     foreach (String m_singleSelectedFileSlin in m_musicFileDialogSlin.FileNames)
                     {
                         audioFilesSlin.Add(new AudioFileSlin(m_singleSelectedFileSlin));
+                        mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10;
                     }
                 }
             }

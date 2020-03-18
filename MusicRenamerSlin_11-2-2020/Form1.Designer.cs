@@ -45,6 +45,7 @@
             this.btnSelectMusicSlin = new System.Windows.Forms.Button();
             this.grbLogSlin = new System.Windows.Forms.GroupBox();
             this.rtbLogSlin = new System.Windows.Forms.RichTextBox();
+            this.pgbSelectingMusicProgresSlin = new System.Windows.Forms.ProgressBar();
             this.grbOptionsSlin.SuspendLayout();
             this.grbSelectMusicSlin.SuspendLayout();
             this.grbLogSlin.SuspendLayout();
@@ -156,6 +157,7 @@
             // 
             // grbSelectMusicSlin
             // 
+            this.grbSelectMusicSlin.Controls.Add(this.pgbSelectingMusicProgresSlin);
             this.grbSelectMusicSlin.Controls.Add(this.btnRemoveSongSlin);
             this.grbSelectMusicSlin.Controls.Add(this.lsbSelectedMusicSlin);
             this.grbSelectMusicSlin.Controls.Add(this.lblMusicSelectedSlin);
@@ -181,9 +183,9 @@
             // lsbSelectedMusicSlin
             // 
             this.lsbSelectedMusicSlin.FormattingEnabled = true;
-            this.lsbSelectedMusicSlin.Location = new System.Drawing.Point(9, 133);
+            this.lsbSelectedMusicSlin.Location = new System.Drawing.Point(9, 117);
             this.lsbSelectedMusicSlin.Name = "lsbSelectedMusicSlin";
-            this.lsbSelectedMusicSlin.Size = new System.Drawing.Size(185, 251);
+            this.lsbSelectedMusicSlin.Size = new System.Drawing.Size(185, 238);
             this.lsbSelectedMusicSlin.TabIndex = 2;
             // 
             // lblMusicSelectedSlin
@@ -228,6 +230,13 @@
             this.rtbLogSlin.TabIndex = 0;
             this.rtbLogSlin.Text = "";
             // 
+            // pgbSelectingMusicProgresSlin
+            // 
+            this.pgbSelectingMusicProgresSlin.Location = new System.Drawing.Point(9, 361);
+            this.pgbSelectingMusicProgresSlin.Name = "pgbSelectingMusicProgresSlin";
+            this.pgbSelectingMusicProgresSlin.Size = new System.Drawing.Size(185, 23);
+            this.pgbSelectingMusicProgresSlin.TabIndex = 4;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,6 +277,7 @@
         private System.Windows.Forms.Label lnlSelectedListSlin;
         private System.Windows.Forms.Label lblUnselectedListSlin;
         public System.Windows.Forms.ListBox lsbSelectedOrderSlin;
+        public System.Windows.Forms.ProgressBar pgbSelectingMusicProgresSlin;
     }
 }
 
