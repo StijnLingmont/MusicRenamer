@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -66,7 +66,21 @@ namespace MusicRenamerSlin_11_2_2020
 
         private void btnRemoveSongSlin_Click(object sender, EventArgs e)
         {
-            audioListSlin.RemoveFileSlin(lsbSelectedMusicSlin.SelectedIndex);
+            if (lsbSelectedMusicSlin.SelectedIndex >= 0)
+            {
+                audioListSlin.RemoveFileSlin(lsbSelectedMusicSlin.SelectedIndex);
+                RenewSelectedListSlin();
+            } else
+            {
+                MessageBox.Show("Please select the file you want to remove!");
+            }
+        }
+
+        private void btnRenameSongsSlin_Click(object sender, EventArgs e)
+        {
+            List<string> m_orderListItemsSlin = orderListSlin.GetSelectedItemsSlin();
+            audioListSlin.RenameFilesSlin(m_orderListItemsSlin);
+
             RenewSelectedListSlin();
         }
 
