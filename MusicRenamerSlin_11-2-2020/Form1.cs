@@ -44,11 +44,23 @@ namespace MusicRenamerSlin_11_2_2020
         }
         #endregion
 
-        private void btnSelectMusicSlin_Click(object sender, EventArgs e)
+        private void btnSelectMusicByFolderSlin_Click(object sender, EventArgs e)
         {
-            LoggerSlin("Selecting Music...");
+            pgbSelectingMusicProgresSlin.Value = 0;
 
-            audioListSlin.SelectFilesSlin();
+            LoggerSlin("Selecting Music by Folder...");
+
+            audioListSlin.SelectFilesSlin(true);
+            RenewSelectedListSlin();
+        }
+
+        private void btnSelectMusicByFilesSlin_Click(object sender, EventArgs e)
+        {
+            pgbSelectingMusicProgresSlin.Value = 0;
+
+            LoggerSlin("Selecting Music by Files...");
+
+            audioListSlin.SelectFilesSlin(false);
             RenewSelectedListSlin();
         }
 

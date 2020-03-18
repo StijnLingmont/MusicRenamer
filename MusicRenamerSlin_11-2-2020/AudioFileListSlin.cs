@@ -20,31 +20,71 @@ namespace MusicRenamerSlin_11_2_2020
 
         public Main mainFormSlin;
 
+        string[] avaiableFileExtensionsSlin = { ".wav",".aiff",".aif",".aifc",".m4a",".mogg",".caf",".pcm",".flac",".alac",".wma",".mp3",".ogg",".aac",".wma" };
+
         public AudioFileListSlin(Main a_mainFormSlin)
         {
             audioFilesSlin = new List<AudioFileSlin>();
             mainFormSlin = a_mainFormSlin;
         }
 
-        public void SelectFilesSlin()
+        public void SelectFilesSlin(bool m_usingFolderOptionSlin)
         {
-            using (OpenFileDialog m_musicFileDialogSlin = new OpenFileDialog())
+            try
             {
-                m_musicFileDialogSlin.Filter = "All Audio Files|*.wav;*.aiff;*.aif;*.aifc;*.m4a;*.mogg;*.caf;*.pcm;*.flac;*.alac;*.wma;*.mp3;*.ogg;*.aac;*.wma;";
-                m_musicFileDialogSlin.RestoreDirectory = true;
-                m_musicFileDialogSlin.Multiselect = true;
-
-                if (m_musicFileDialogSlin.ShowDialog() == DialogResult.OK)
+                //Check if the user wants to select files or a folder
+                if (m_usingFolderOptionSlin)
                 {
-                    mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_musicFileDialogSlin.FileNames.Length * 10;
-
-                    // Read the files
-                    foreach (String m_singleSelectedFileSlin in m_musicFileDialogSlin.FileNames)
+                    using (FolderBrowserDialog m_musicFileDialogSlin = new FolderBrowserDialog())
                     {
-                        audioFilesSlin.Add(new AudioFileSlin(m_singleSelectedFileSlin));
-                        mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10;
+                        if (m_musicFileDialogSlin.ShowDialog() == DialogResult.OK)
+                        {
+                            var m_allFilesFromDirectory = System.IO.Directory.GetFiles(m_musicFileDialogSlin.SelectedPath); //Gives all the files from the directory
+
+                            mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_allFilesFromDirectory.Length * 10;
+
+                            //Go trough all the files of the folder
+                            foreach (string m_singleSelectedFileSlin in m_allFilesFromDirectory)
+                            {
+                                string m_fileExtensionSlin = Path.GetExtension(m_singleSelectedFileSlin);
+
+                                //Is the file an audio file
+                                if (avaiableFileExtensionsSlin.Contains(m_fileExtensionSlin))
+                                {
+                                    audioFilesSlin.Add(new AudioFileSlin(m_singleSelectedFileSlin));
+                                }
+
+                                mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                    using (OpenFileDialog m_musicFileDialogSlin = new OpenFileDialog())
+                    {
+                        m_musicFileDialogSlin.Filter = "All Audio Files|*.wav;*.aiff;*.aif;*.aifc;*.m4a;*.mogg;*.caf;*.pcm;*.flac;*.alac;*.wma;*.mp3;*.ogg;*.aac;*.wma;";
+                        m_musicFileDialogSlin.RestoreDirectory = true;
+                        m_musicFileDialogSlin.Multiselect = true;
+
+                        if (m_musicFileDialogSlin.ShowDialog() == DialogResult.OK)
+                        {
+                            mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_musicFileDialogSlin.FileNames.Length * 10;
+
+                            // Go trough all the files that are selected
+                            foreach (String m_singleSelectedFileSlin in m_musicFileDialogSlin.FileNames)
+                            {
+                                audioFilesSlin.Add(new AudioFileSlin(m_singleSelectedFileSlin));
+                                mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10;
+                            }
+                        }
                     }
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Oops! Something went wrong when selecting your songs! Please try another directory!");
             }
         }
 
