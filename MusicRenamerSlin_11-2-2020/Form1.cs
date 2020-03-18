@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -92,10 +92,13 @@ namespace MusicRenamerSlin_11_2_2020
             rtbLogSlin.AppendText(a_loggingStringSlin + "\n");
         }
 
-        private void btnRenameSongsSlin_Click(object sender, EventArgs e)
+        public void RenameEndStatusSlin(int a_completedRenames, int a_amountRenamingSlin)
         {
-            List<string> m_orderListItemsSlin = orderListSlin.GetSelectedItemsSlin();
-            audioListSlin.RenameFilesSlin(m_orderListItemsSlin);
+            int m_uncompletedRenames = a_amountRenamingSlin - a_completedRenames;
+
+            //Update the labels for the end status of the rename process
+            lblSuccesRenamedSlin.Text = a_completedRenames + " songs have succesfully be renamed";
+            lblUnsuccesRenamedSlin.Text = m_uncompletedRenames + " songs have not be renamed";
         }
     }
 }

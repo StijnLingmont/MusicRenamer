@@ -58,7 +58,6 @@ namespace MusicRenamerSlin_11_2_2020
                             }
                         }
                     }
-
                 }
                 else
                 {
@@ -113,6 +112,11 @@ namespace MusicRenamerSlin_11_2_2020
 
         public void RenameFilesSlin(List<string> a_orderListSlin)
         {
+            int m_successRenamesSlin = 0;
+
+            mainFormSlin.pgbRenameSlin.Maximum = audioFilesSlin.Count() * 10;
+            mainFormSlin.pgbRenameSlin.Value = 0;
+
             foreach(var m_fileSlin in audioFilesSlin)
             {
                 m_fileSlin.tagDataFromFilesSlin.Clear();
@@ -120,7 +124,7 @@ namespace MusicRenamerSlin_11_2_2020
                 //Check if the file still exists
                 if(GetFilesFromDirectorySlin(m_fileSlin.GetNewAudioFileNameSlin()))
                 {
-                    Id3TagReaderSlin(m_fileSlin, a_orderListSlin);
+                    bool m_statusOfId3RenameSlin = Id3TagReaderSlin(m_fileSlin, a_orderListSlin); //Gives boolean back with if its succeeded or not
 
                     //Check if all the data is provided
                     if (!CheckRenameRequirementsSlin(m_fileSlin))
@@ -128,19 +132,33 @@ namespace MusicRenamerSlin_11_2_2020
                         MusicRecognisionSlin();
                     }
 
-                    //Rename files
-                    m_fileSlin.newNameSlin = RenameStringSlin(m_fileSlin.tagDataFromFilesSlin);
-                    m_fileSlin.RenameFileSlin();
+                    //Check if the rename can be done
+                    if(CheckRenameRequirementsSlin(m_fileSlin) && m_statusOfId3RenameSlin)
+                    {
+                        //Rename files
+                        m_fileSlin.newNameSlin = RenameStringSlin(m_fileSlin.tagDataFromFilesSlin);
+                        bool m_renameStatus = m_fileSlin.RenameFileSlin();
+
+                        if (m_renameStatus)
+                        {
+                            m_successRenamesSlin++;
+                        }
+                    }
                 }
+
+                mainFormSlin.pgbRenameSlin.Value = mainFormSlin.pgbRenameSlin.Value + 10;
             }
+
+            mainFormSlin.RenameEndStatusSlin(m_successRenamesSlin, audioFilesSlin.Count());
+            audioFilesSlin.Clear();
         }
 
         private void MusicRecognisionSlin()
         {
-            MessageBox.Show("Music Recognision will work!");
+            Console.WriteLine("Music Recognision will work!");
         }
 
-        private void Id3TagReaderSlin(AudioFileSlin a_audioFileSlin, List<string> a_orderListSlin)
+        private bool Id3TagReaderSlin(AudioFileSlin a_audioFileSlin, List<string> a_orderListSlin)
         {
             try
             {
@@ -181,10 +199,13 @@ namespace MusicRenamerSlin_11_2_2020
                         MessageBox.Show("The data from the file is unvalid");
                     }
                 }
+
+                return true;
             }
             catch
             {
                 MessageBox.Show("Sorry! Something went wrong! Contact the company for more info.");
+                return false;
             }
 
         }
@@ -210,7 +231,5 @@ namespace MusicRenamerSlin_11_2_2020
 
             return m_fileNameSlin;
         }
-
-
     }
 }

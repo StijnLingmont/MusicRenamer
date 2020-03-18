@@ -26,13 +26,22 @@ namespace MusicRenamerSlin_11_2_2020
             this.tagDataFromFilesSlin = new List<string>();
         }
 
-        public void RenameFileSlin()
+        public bool RenameFileSlin()
         {
-            string m_getFileExtension = Path.GetExtension(audioFilePathSlin);
-            string m_directoySlin = Path.GetDirectoryName(audioFilePathSlin);
-            string m_newFilePathSlin = m_directoySlin + "\\" + newNameSlin + m_getFileExtension;
+            try
+            {
+                string m_getFileExtension = Path.GetExtension(audioFilePathSlin);
+                string m_directoySlin = Path.GetDirectoryName(audioFilePathSlin);
+                string m_newFilePathSlin = m_directoySlin + "\\" + newNameSlin + m_getFileExtension;
 
-            File.Move(audioFilePathSlin, m_newFilePathSlin);
+                File.Move(audioFilePathSlin, m_newFilePathSlin);
+
+                return true;
+            } 
+            catch
+            {
+                return false;
+            }
         }
 
         public string GetNewAudioFileNameSlin()

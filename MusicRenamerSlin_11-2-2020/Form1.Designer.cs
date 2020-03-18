@@ -47,6 +47,7 @@
             this.btnSelectMusicByFilesSlin = new System.Windows.Forms.Button();
             this.grbLogSlin = new System.Windows.Forms.GroupBox();
             this.rtbLogSlin = new System.Windows.Forms.RichTextBox();
+            this.pgbRenameSlin = new System.Windows.Forms.ProgressBar();
             this.grbOptionsSlin.SuspendLayout();
             this.grbSelectMusicSlin.SuspendLayout();
             this.grbLogSlin.SuspendLayout();
@@ -54,6 +55,7 @@
             // 
             // grbOptionsSlin
             // 
+            this.grbOptionsSlin.Controls.Add(this.pgbRenameSlin);
             this.grbOptionsSlin.Controls.Add(this.lnlSelectedListSlin);
             this.grbOptionsSlin.Controls.Add(this.lblUnselectedListSlin);
             this.grbOptionsSlin.Controls.Add(this.lblUnsuccesRenamedSlin);
@@ -62,9 +64,9 @@
             this.grbOptionsSlin.Controls.Add(this.lsbSelectedOrderSlin);
             this.grbOptionsSlin.Controls.Add(this.lsbUnselectedOrderSlin);
             this.grbOptionsSlin.Controls.Add(this.btnRenameSongsSlin);
-            this.grbOptionsSlin.Location = new System.Drawing.Point(218, 12);
+            this.grbOptionsSlin.Location = new System.Drawing.Point(305, 12);
             this.grbOptionsSlin.Name = "grbOptionsSlin";
-            this.grbOptionsSlin.Size = new System.Drawing.Size(244, 435);
+            this.grbOptionsSlin.Size = new System.Drawing.Size(244, 468);
             this.grbOptionsSlin.TabIndex = 0;
             this.grbOptionsSlin.TabStop = false;
             this.grbOptionsSlin.Text = "Options";
@@ -72,7 +74,7 @@
             // lnlSelectedListSlin
             // 
             this.lnlSelectedListSlin.AutoSize = true;
-            this.lnlSelectedListSlin.Location = new System.Drawing.Point(125, 116);
+            this.lnlSelectedListSlin.Location = new System.Drawing.Point(125, 103);
             this.lnlSelectedListSlin.Name = "lnlSelectedListSlin";
             this.lnlSelectedListSlin.Size = new System.Drawing.Size(76, 13);
             this.lnlSelectedListSlin.TabIndex = 9;
@@ -81,7 +83,7 @@
             // lblUnselectedListSlin
             // 
             this.lblUnselectedListSlin.AutoSize = true;
-            this.lblUnselectedListSlin.Location = new System.Drawing.Point(7, 117);
+            this.lblUnselectedListSlin.Location = new System.Drawing.Point(6, 103);
             this.lblUnselectedListSlin.Name = "lblUnselectedListSlin";
             this.lblUnselectedListSlin.Size = new System.Drawing.Size(88, 13);
             this.lblUnselectedListSlin.TabIndex = 8;
@@ -91,7 +93,7 @@
             // 
             this.lblUnsuccesRenamedSlin.AutoSize = true;
             this.lblUnsuccesRenamedSlin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnsuccesRenamedSlin.Location = new System.Drawing.Point(7, 410);
+            this.lblUnsuccesRenamedSlin.Location = new System.Drawing.Point(7, 398);
             this.lblUnsuccesRenamedSlin.Name = "lblUnsuccesRenamedSlin";
             this.lblUnsuccesRenamedSlin.Size = new System.Drawing.Size(185, 16);
             this.lblUnsuccesRenamedSlin.TabIndex = 7;
@@ -101,7 +103,7 @@
             // 
             this.lblSuccesRenamedSlin.AutoSize = true;
             this.lblSuccesRenamedSlin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSuccesRenamedSlin.Location = new System.Drawing.Point(7, 393);
+            this.lblSuccesRenamedSlin.Location = new System.Drawing.Point(6, 376);
             this.lblSuccesRenamedSlin.Name = "lblSuccesRenamedSlin";
             this.lblSuccesRenamedSlin.Size = new System.Drawing.Size(233, 16);
             this.lblSuccesRenamedSlin.TabIndex = 4;
@@ -111,7 +113,7 @@
             // 
             this.lblSelectRenameOrderSlin.AutoSize = true;
             this.lblSelectRenameOrderSlin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectRenameOrderSlin.Location = new System.Drawing.Point(6, 96);
+            this.lblSelectRenameOrderSlin.Location = new System.Drawing.Point(6, 75);
             this.lblSelectRenameOrderSlin.Name = "lblSelectRenameOrderSlin";
             this.lblSelectRenameOrderSlin.Size = new System.Drawing.Size(157, 20);
             this.lblSelectRenameOrderSlin.TabIndex = 6;
@@ -120,7 +122,7 @@
             // lsbSelectedOrderSlin
             // 
             this.lsbSelectedOrderSlin.FormattingEnabled = true;
-            this.lsbSelectedOrderSlin.Location = new System.Drawing.Point(128, 134);
+            this.lsbSelectedOrderSlin.Location = new System.Drawing.Point(128, 119);
             this.lsbSelectedOrderSlin.Name = "lsbSelectedOrderSlin";
             this.lsbSelectedOrderSlin.Size = new System.Drawing.Size(110, 251);
             this.lsbSelectedOrderSlin.TabIndex = 5;
@@ -137,7 +139,7 @@
             "Year",
             "Genres",
             "Durartion"});
-            this.lsbUnselectedOrderSlin.Location = new System.Drawing.Point(6, 133);
+            this.lsbUnselectedOrderSlin.Location = new System.Drawing.Point(6, 119);
             this.lsbUnselectedOrderSlin.Name = "lsbUnselectedOrderSlin";
             this.lsbUnselectedOrderSlin.Size = new System.Drawing.Size(110, 251);
             this.lsbUnselectedOrderSlin.TabIndex = 4;
@@ -150,7 +152,7 @@
             this.btnRenameSongsSlin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRenameSongsSlin.Location = new System.Drawing.Point(6, 19);
             this.btnRenameSongsSlin.Name = "btnRenameSongsSlin";
-            this.btnRenameSongsSlin.Size = new System.Drawing.Size(232, 72);
+            this.btnRenameSongsSlin.Size = new System.Drawing.Size(232, 50);
             this.btnRenameSongsSlin.TabIndex = 0;
             this.btnRenameSongsSlin.Text = "Rename List";
             this.btnRenameSongsSlin.UseVisualStyleBackColor = true;
@@ -166,7 +168,7 @@
             this.grbSelectMusicSlin.Controls.Add(this.btnSelectMusicByFilesSlin);
             this.grbSelectMusicSlin.Location = new System.Drawing.Point(12, 12);
             this.grbSelectMusicSlin.Name = "grbSelectMusicSlin";
-            this.grbSelectMusicSlin.Size = new System.Drawing.Size(200, 468);
+            this.grbSelectMusicSlin.Size = new System.Drawing.Size(287, 468);
             this.grbSelectMusicSlin.TabIndex = 1;
             this.grbSelectMusicSlin.TabStop = false;
             this.grbSelectMusicSlin.Text = "Selected Music";
@@ -176,7 +178,7 @@
             this.btnSelectMusicByFolderSlin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectMusicByFolderSlin.Location = new System.Drawing.Point(7, 75);
             this.btnSelectMusicByFolderSlin.Name = "btnSelectMusicByFolderSlin";
-            this.btnSelectMusicByFolderSlin.Size = new System.Drawing.Size(187, 50);
+            this.btnSelectMusicByFolderSlin.Size = new System.Drawing.Size(274, 50);
             this.btnSelectMusicByFolderSlin.TabIndex = 5;
             this.btnSelectMusicByFolderSlin.Text = "Select Music by Folder";
             this.btnSelectMusicByFolderSlin.UseVisualStyleBackColor = true;
@@ -186,7 +188,7 @@
             // 
             this.pgbSelectingMusicProgresSlin.Location = new System.Drawing.Point(9, 398);
             this.pgbSelectingMusicProgresSlin.Name = "pgbSelectingMusicProgresSlin";
-            this.pgbSelectingMusicProgresSlin.Size = new System.Drawing.Size(185, 23);
+            this.pgbSelectingMusicProgresSlin.Size = new System.Drawing.Size(272, 23);
             this.pgbSelectingMusicProgresSlin.TabIndex = 4;
             // 
             // btnRemoveSongSlin
@@ -194,7 +196,7 @@
             this.btnRemoveSongSlin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveSongSlin.Location = new System.Drawing.Point(9, 427);
             this.btnRemoveSongSlin.Name = "btnRemoveSongSlin";
-            this.btnRemoveSongSlin.Size = new System.Drawing.Size(185, 35);
+            this.btnRemoveSongSlin.Size = new System.Drawing.Size(272, 35);
             this.btnRemoveSongSlin.TabIndex = 3;
             this.btnRemoveSongSlin.Text = "Remove Selected Song";
             this.btnRemoveSongSlin.UseVisualStyleBackColor = true;
@@ -203,9 +205,11 @@
             // lsbSelectedMusicSlin
             // 
             this.lsbSelectedMusicSlin.FormattingEnabled = true;
+            this.lsbSelectedMusicSlin.HorizontalScrollbar = true;
             this.lsbSelectedMusicSlin.Location = new System.Drawing.Point(9, 154);
             this.lsbSelectedMusicSlin.Name = "lsbSelectedMusicSlin";
-            this.lsbSelectedMusicSlin.Size = new System.Drawing.Size(185, 238);
+            this.lsbSelectedMusicSlin.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lsbSelectedMusicSlin.Size = new System.Drawing.Size(272, 238);
             this.lsbSelectedMusicSlin.TabIndex = 2;
             // 
             // lblMusicSelectedSlin
@@ -223,7 +227,7 @@
             this.btnSelectMusicByFilesSlin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectMusicByFilesSlin.Location = new System.Drawing.Point(7, 19);
             this.btnSelectMusicByFilesSlin.Name = "btnSelectMusicByFilesSlin";
-            this.btnSelectMusicByFilesSlin.Size = new System.Drawing.Size(187, 50);
+            this.btnSelectMusicByFilesSlin.Size = new System.Drawing.Size(274, 50);
             this.btnSelectMusicByFilesSlin.TabIndex = 0;
             this.btnSelectMusicByFilesSlin.Text = "Select Music by Files";
             this.btnSelectMusicByFilesSlin.UseVisualStyleBackColor = true;
@@ -232,9 +236,9 @@
             // grbLogSlin
             // 
             this.grbLogSlin.Controls.Add(this.rtbLogSlin);
-            this.grbLogSlin.Location = new System.Drawing.Point(468, 12);
+            this.grbLogSlin.Location = new System.Drawing.Point(555, 12);
             this.grbLogSlin.Name = "grbLogSlin";
-            this.grbLogSlin.Size = new System.Drawing.Size(200, 435);
+            this.grbLogSlin.Size = new System.Drawing.Size(200, 468);
             this.grbLogSlin.TabIndex = 3;
             this.grbLogSlin.TabStop = false;
             this.grbLogSlin.Text = "Log";
@@ -246,15 +250,22 @@
             this.rtbLogSlin.Location = new System.Drawing.Point(6, 19);
             this.rtbLogSlin.Name = "rtbLogSlin";
             this.rtbLogSlin.ReadOnly = true;
-            this.rtbLogSlin.Size = new System.Drawing.Size(188, 407);
+            this.rtbLogSlin.Size = new System.Drawing.Size(188, 443);
             this.rtbLogSlin.TabIndex = 0;
             this.rtbLogSlin.Text = "";
+            // 
+            // pgbRenameSlin
+            // 
+            this.pgbRenameSlin.Location = new System.Drawing.Point(6, 439);
+            this.pgbRenameSlin.Name = "pgbRenameSlin";
+            this.pgbRenameSlin.Size = new System.Drawing.Size(232, 23);
+            this.pgbRenameSlin.TabIndex = 6;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 492);
+            this.ClientSize = new System.Drawing.Size(768, 492);
             this.Controls.Add(this.grbLogSlin);
             this.Controls.Add(this.grbSelectMusicSlin);
             this.Controls.Add(this.grbOptionsSlin);
@@ -292,6 +303,7 @@
         public System.Windows.Forms.ListBox lsbSelectedOrderSlin;
         public System.Windows.Forms.ProgressBar pgbSelectingMusicProgresSlin;
         private System.Windows.Forms.Button btnSelectMusicByFolderSlin;
+        public System.Windows.Forms.ProgressBar pgbRenameSlin;
     }
 }
 
