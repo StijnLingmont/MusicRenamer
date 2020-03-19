@@ -12,12 +12,20 @@ using System.Windows.Forms;
 
 namespace MusicRenamerSlin_11_2_2020
 {
+    /*
+     * Auteur: Stijn Lingmont
+     * Date: 13-03-2020
+     * Description: The main form when the program is opened
+    */
+
     public partial class Main : Form
     {
         OrderList orderListSlin;
         AudioFileListSlin audioListSlin;
+
         public Main()
         {
+            //Initialise
             InitializeComponent();
 
             orderListSlin = new OrderList(this);
@@ -70,7 +78,8 @@ namespace MusicRenamerSlin_11_2_2020
             {
                 audioListSlin.RemoveFileSlin(lsbSelectedMusicSlin.SelectedIndex);
                 RenewSelectedListSlin();
-            } else
+            } 
+            else
             {
                 MessageBox.Show("Please select the file you want to remove!");
             }
@@ -78,7 +87,8 @@ namespace MusicRenamerSlin_11_2_2020
 
         private void btnRenameSongsSlin_Click(object sender, EventArgs e)
         {
-            List<string> m_orderListItemsSlin = orderListSlin.GetSelectedItemsSlin();
+            List<string> m_orderListItemsSlin = orderListSlin.GetSelectedItemsSlin(); //Get all the selected order items
+
             audioListSlin.RenameFilesSlin(m_orderListItemsSlin);
 
             RenewSelectedListSlin();
@@ -108,12 +118,13 @@ namespace MusicRenamerSlin_11_2_2020
 
         public void RenameEndStatusSlin(int a_completedRenames, int a_amountRenamingSlin)
         {
-            int m_uncompletedRenamesSlin = a_amountRenamingSlin - a_completedRenames;
+            int m_uncompletedRenamesSlin = a_amountRenamingSlin - a_completedRenames; //Calculate failed
 
+            //Get the update messages
             string m_completedTextSlin = a_completedRenames + " songs have succesfully be renamed";
             string m_uncompletedTextSlin = m_uncompletedRenamesSlin + " songs have not be renamed";
 
-            //Update the labels for the end status of the rename process
+            //Update the labels and the Log for the end status of the rename process
             lblSuccesRenamedSlin.Text = m_completedTextSlin;
             lblUnsuccesRenamedSlin.Text = m_uncompletedTextSlin;
 

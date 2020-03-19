@@ -7,7 +7,7 @@ namespace MusicRenamerSlin_11_2_2020
 {
     /*
      * Auteur: Stijn Lingmont
-     * Date: 12-02-2020
+     * Date: 13-03-2020
      * Description: This class provides all the options for the order list.
      */
     public class OrderList

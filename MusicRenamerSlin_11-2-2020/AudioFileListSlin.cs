@@ -20,12 +20,25 @@ namespace MusicRenamerSlin_11_2_2020
 
         public Main mainFormSlin;
 
+        //All Avalable Audio Extensions
         string[] avaiableFileExtensionsSlin = { ".wav",".aiff",".aif",".aifc",".m4a",".mogg",".caf",".pcm",".flac",".alac",".wma",".mp3",".ogg",".aac",".wma" };
 
         public AudioFileListSlin(Main a_mainFormSlin)
         {
             audioFilesSlin = new List<AudioFileSlin>();
             mainFormSlin = a_mainFormSlin;
+        }
+
+        private string GetAvailableExtensionsAsTextSlin()
+        {
+            string m_availableExtensionsSlin = "";
+
+            foreach (string m_extensionSlin in avaiableFileExtensionsSlin)
+            {
+                m_availableExtensionsSlin += "*" + m_extensionSlin + ";";
+            }
+
+            return m_availableExtensionsSlin;
         }
 
         public void SelectFilesSlin(bool m_usingFolderOptionSlin)
@@ -65,9 +78,11 @@ namespace MusicRenamerSlin_11_2_2020
                 }
                 else
                 {
+                    string m_filterForAudioSlin = GetAvailableExtensionsAsTextSlin();
+
                     using (OpenFileDialog m_musicFileDialogSlin = new OpenFileDialog())
                     {
-                        m_musicFileDialogSlin.Filter = "All Audio Files|*.wav;*.aiff;*.aif;*.aifc;*.m4a;*.mogg;*.caf;*.pcm;*.flac;*.alac;*.wma;*.mp3;*.ogg;*.aac;*.wma;";
+                        m_musicFileDialogSlin.Filter = "All Audio Files|" + m_filterForAudioSlin;
                         m_musicFileDialogSlin.RestoreDirectory = true;
                         m_musicFileDialogSlin.Multiselect = true;
 
@@ -226,6 +241,7 @@ namespace MusicRenamerSlin_11_2_2020
 
             foreach (string m_singleTagDataFromFile in a_tagDataFromFileSlin)
             {
+                //Check if the data is valid
                 if(m_singleTagDataFromFile != null)
                 {
                     if (m_fileNameSlin.Length > 0)
