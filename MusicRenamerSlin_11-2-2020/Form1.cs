@@ -101,18 +101,24 @@ namespace MusicRenamerSlin_11_2_2020
             LoggerSlin(audioListSlin.audioFilesSlin.Count + " Selected music");
         }
 
-        private void LoggerSlin(String a_loggingStringSlin)
+        public void LoggerSlin(String a_loggingStringSlin)
         {
             rtbLogSlin.AppendText(a_loggingStringSlin + "\n");
         }
 
         public void RenameEndStatusSlin(int a_completedRenames, int a_amountRenamingSlin)
         {
-            int m_uncompletedRenames = a_amountRenamingSlin - a_completedRenames;
+            int m_uncompletedRenamesSlin = a_amountRenamingSlin - a_completedRenames;
+
+            string m_completedTextSlin = a_completedRenames + " songs have succesfully be renamed";
+            string m_uncompletedTextSlin = m_uncompletedRenamesSlin + " songs have not be renamed";
 
             //Update the labels for the end status of the rename process
-            lblSuccesRenamedSlin.Text = a_completedRenames + " songs have succesfully be renamed";
-            lblUnsuccesRenamedSlin.Text = m_uncompletedRenames + " songs have not be renamed";
+            lblSuccesRenamedSlin.Text = m_completedTextSlin;
+            lblUnsuccesRenamedSlin.Text = m_uncompletedTextSlin;
+
+            LoggerSlin(m_completedTextSlin);
+            LoggerSlin(m_uncompletedTextSlin);
         }
     }
 }

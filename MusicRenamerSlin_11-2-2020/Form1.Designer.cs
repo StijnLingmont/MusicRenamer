@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.grbOptionsSlin = new System.Windows.Forms.GroupBox();
+            this.pgbRenameSlin = new System.Windows.Forms.ProgressBar();
             this.lnlSelectedListSlin = new System.Windows.Forms.Label();
             this.lblUnselectedListSlin = new System.Windows.Forms.Label();
             this.lblUnsuccesRenamedSlin = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.btnSelectMusicByFilesSlin = new System.Windows.Forms.Button();
             this.grbLogSlin = new System.Windows.Forms.GroupBox();
             this.rtbLogSlin = new System.Windows.Forms.RichTextBox();
-            this.pgbRenameSlin = new System.Windows.Forms.ProgressBar();
             this.grbOptionsSlin.SuspendLayout();
             this.grbSelectMusicSlin.SuspendLayout();
             this.grbLogSlin.SuspendLayout();
@@ -70,6 +70,13 @@
             this.grbOptionsSlin.TabIndex = 0;
             this.grbOptionsSlin.TabStop = false;
             this.grbOptionsSlin.Text = "Options";
+            // 
+            // pgbRenameSlin
+            // 
+            this.pgbRenameSlin.Location = new System.Drawing.Point(6, 439);
+            this.pgbRenameSlin.Name = "pgbRenameSlin";
+            this.pgbRenameSlin.Size = new System.Drawing.Size(232, 23);
+            this.pgbRenameSlin.TabIndex = 6;
             // 
             // lnlSelectedListSlin
             // 
@@ -238,7 +245,7 @@
             this.grbLogSlin.Controls.Add(this.rtbLogSlin);
             this.grbLogSlin.Location = new System.Drawing.Point(555, 12);
             this.grbLogSlin.Name = "grbLogSlin";
-            this.grbLogSlin.Size = new System.Drawing.Size(200, 468);
+            this.grbLogSlin.Size = new System.Drawing.Size(354, 468);
             this.grbLogSlin.TabIndex = 3;
             this.grbLogSlin.TabStop = false;
             this.grbLogSlin.Text = "Log";
@@ -250,22 +257,17 @@
             this.rtbLogSlin.Location = new System.Drawing.Point(6, 19);
             this.rtbLogSlin.Name = "rtbLogSlin";
             this.rtbLogSlin.ReadOnly = true;
-            this.rtbLogSlin.Size = new System.Drawing.Size(188, 443);
+            this.rtbLogSlin.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.rtbLogSlin.Size = new System.Drawing.Size(342, 443);
             this.rtbLogSlin.TabIndex = 0;
             this.rtbLogSlin.Text = "";
-            // 
-            // pgbRenameSlin
-            // 
-            this.pgbRenameSlin.Location = new System.Drawing.Point(6, 439);
-            this.pgbRenameSlin.Name = "pgbRenameSlin";
-            this.pgbRenameSlin.Size = new System.Drawing.Size(232, 23);
-            this.pgbRenameSlin.TabIndex = 6;
+            this.rtbLogSlin.WordWrap = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 492);
+            this.ClientSize = new System.Drawing.Size(921, 492);
             this.Controls.Add(this.grbLogSlin);
             this.Controls.Add(this.grbSelectMusicSlin);
             this.Controls.Add(this.grbOptionsSlin);

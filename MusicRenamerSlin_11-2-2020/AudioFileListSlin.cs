@@ -43,6 +43,8 @@ namespace MusicRenamerSlin_11_2_2020
 
                             mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_allFilesFromDirectory.Length * 10;
 
+                            mainFormSlin.LoggerSlin("Searching for Audio Files...");
+
                             //Go trough all the files of the folder
                             foreach (string m_singleSelectedFileSlin in m_allFilesFromDirectory)
                             {
@@ -56,6 +58,8 @@ namespace MusicRenamerSlin_11_2_2020
 
                                 mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10;
                             }
+
+                            mainFormSlin.LoggerSlin("Files added");
                         }
                     }
                 }
@@ -71,12 +75,16 @@ namespace MusicRenamerSlin_11_2_2020
                         {
                             mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_musicFileDialogSlin.FileNames.Length * 10;
 
+                            mainFormSlin.LoggerSlin("Adding Files...");
+
                             // Go trough all the files that are selected
                             foreach (String m_singleSelectedFileSlin in m_musicFileDialogSlin.FileNames)
                             {
                                 audioFilesSlin.Add(new AudioFileSlin(m_singleSelectedFileSlin));
                                 mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10;
                             }
+
+                            mainFormSlin.LoggerSlin("Files added");
                         }
                     }
                 }
@@ -117,7 +125,9 @@ namespace MusicRenamerSlin_11_2_2020
             mainFormSlin.pgbRenameSlin.Maximum = audioFilesSlin.Count() * 10;
             mainFormSlin.pgbRenameSlin.Value = 0;
 
-            foreach(var m_fileSlin in audioFilesSlin)
+            mainFormSlin.LoggerSlin("Start renaming...");
+
+            foreach (var m_fileSlin in audioFilesSlin)
             {
                 m_fileSlin.tagDataFromFilesSlin.Clear();
 
@@ -164,7 +174,7 @@ namespace MusicRenamerSlin_11_2_2020
             {
                 string m_audioFilePathSlin = a_audioFileSlin.GetNewAudioFileNameSlin(); //get the audioFilePath
 
-                var tfile = TagLib.File.Create(m_audioFilePathSlin);
+                var tfile = TagLib.File.Create(m_audioFilePathSlin); //Create a File Reading Instance
 
                 foreach (string m_orderItemSlin in a_orderListSlin)
                 {
