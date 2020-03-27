@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +19,7 @@ namespace MusicRenamerSlin_11_2_2020
     */
     class AudioFileListSlin
     {
+
         public List<AudioFileSlin> audioFilesSlin { get; set; }
 
         public Main mainFormSlin;
@@ -149,20 +153,29 @@ namespace MusicRenamerSlin_11_2_2020
                 //Check if the file still exists
                 if(GetFilesFromDirectorySlin(m_fileSlin.GetNewAudioFileNameSlin()))
                 {
-                    bool m_statusOfId3RenameSlin = Id3TagReaderSlin(m_fileSlin, a_orderListSlin); //Gives boolean back with if its succeeded or not
+                    bool m_statusOfId3RenameSlin = false; ; //Gives boolean back with if its succeeded or not
+                    var thread = new Thread(() => { m_statusOfId3RenameSlin = Id3TagReaderSlin(m_fileSlin, a_orderListSlin); });
+                    thread.Start();
+                    thread.Join();
+
 
                     //Check if all the data is provided
                     if (!CheckRenameRequirementsSlin(m_fileSlin))
                     {
-                        MusicRecognisionSlin();
+                        var thread1 = new Thread(() => MusicRecognisionSlin(m_fileSlin, a_orderListSlin));
+                        thread1.Start();
                     }
 
                     //Check if the rename can be done
                     if(CheckRenameRequirementsSlin(m_fileSlin) && m_statusOfId3RenameSlin)
                     {
+                        bool m_renameStatus = false;
                         //Rename files
+
                         m_fileSlin.newNameSlin = RenameStringSlin(m_fileSlin.tagDataFromFilesSlin);
-                        bool m_renameStatus = m_fileSlin.RenameFileSlin();
+                        var thread2 = new Thread(() => {m_renameStatus = m_fileSlin.RenameFileSlin(); });
+                        thread2.Start();
+                        thread2.Join();
 
                         if (m_renameStatus)
                         {
@@ -178,9 +191,29 @@ namespace MusicRenamerSlin_11_2_2020
             audioFilesSlin.Clear();
         }
 
-        private void MusicRecognisionSlin()
+        private void MusicRecognisionSlin(AudioFileSlin a_musicFileSlin, List<string> a_orderListSlin)
         {
-            Console.WriteLine("Music Recognision will work!");
+            string m_filePathSlin = a_musicFileSlin.GetNewAudioFileNameSlin();
+            List<string> m_fileDataSlin = a_musicFileSlin.tagDataFromFilesSlin;
+
+            //Create recognise instance of API
+            var m_musicRecognisionSlin = new MusicRecognision();
+
+            //Send file to API
+            m_musicRecognisionSlin.SendFileToApi(m_filePathSlin);
+
+            //If the song is found
+            if(m_musicRecognisionSlin.GetStatusSlin())
+            {
+                for(int indexSlin = 0; indexSlin < m_fileDataSlin.Count(); indexSlin++)
+                {
+                    if(m_fileDataSlin[indexSlin] == null)
+                    {
+                        //Set the empty value to the value from the Music Recognision
+                        m_fileDataSlin[indexSlin] = m_musicRecognisionSlin.GetSpeceficResultDataSlin(a_orderListSlin[indexSlin]);
+                    }
+                }
+            }
         }
 
         private bool Id3TagReaderSlin(AudioFileSlin a_audioFileSlin, List<string> a_orderListSlin)

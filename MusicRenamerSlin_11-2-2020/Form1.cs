@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -60,7 +61,7 @@ namespace MusicRenamerSlin_11_2_2020
 
             audioListSlin.SelectFilesSlin(true);
             RenewSelectedListSlin();
-        }
+    }
 
         private void btnSelectMusicByFilesSlin_Click(object sender, EventArgs e)
         {
@@ -88,7 +89,6 @@ namespace MusicRenamerSlin_11_2_2020
         private void btnRenameSongsSlin_Click(object sender, EventArgs e)
         {
             List<string> m_orderListItemsSlin = orderListSlin.GetSelectedItemsSlin(); //Get all the selected order items
-
             audioListSlin.RenameFilesSlin(m_orderListItemsSlin);
 
             RenewSelectedListSlin();
