@@ -55,22 +55,26 @@ namespace MusicRenamerSlin_11_2_2020
 
         private void btnSelectMusicByFolderSlin_Click(object sender, EventArgs e)
         {
-            pgbSelectingMusicProgresSlin.Value = 0;
-
-            LoggerSlin("Selecting Music by Folder...");
-
-            audioListSlin.SelectFilesSlin(true);
-            RenewSelectedListSlin();
-    }
+            LoggerSlin("Selecting files by Folder");
+            SelectMusicSlin(true);
+        }
 
         private void btnSelectMusicByFilesSlin_Click(object sender, EventArgs e)
+        {
+            LoggerSlin("Selecting files by Files");
+            SelectMusicSlin(false);
+        }
+
+        private void SelectMusicSlin(bool a_isFolderSlin)
         {
             pgbSelectingMusicProgresSlin.Value = 0;
 
             LoggerSlin("Selecting Music by Files...");
 
-            audioListSlin.SelectFilesSlin(false);
+            audioListSlin.SelectFilesSlin(a_isFolderSlin);
+
             RenewSelectedListSlin();
+            LoggerSlin(audioListSlin.audioFilesSlin.Count + " Selected music");
         }
 
         private void btnRemoveSongSlin_Click(object sender, EventArgs e)
@@ -108,7 +112,22 @@ namespace MusicRenamerSlin_11_2_2020
 
             //Give the amount of selected Items
             lblMusicSelectedSlin.Text = "You selected " + audioListSlin.audioFilesSlin.Count + " songs";
-            LoggerSlin(audioListSlin.audioFilesSlin.Count + " Selected music");
+
+            ProgramFeaturesCheckSlin();
+        }
+
+        private void ProgramFeaturesCheckSlin()
+        {
+
+            if (audioListSlin.audioFilesSlin.Count > 0)
+            {
+                btnRenameSongsSlin.Enabled = true;
+                btnRemoveSongSlin.Enabled = true;
+            } else
+            {
+                btnRenameSongsSlin.Enabled = false;
+                btnRemoveSongSlin.Enabled = false;
+            }
         }
 
         public void LoggerSlin(String a_loggingStringSlin)

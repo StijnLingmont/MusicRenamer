@@ -33,6 +33,7 @@ namespace MusicRenamerSlin_11_2_2020
             mainFormSlin = a_mainFormSlin;
         }
 
+        //Make a string with all the available extensions
         private string GetAvailableExtensionsAsTextSlin()
         {
             string m_availableExtensionsSlin = "";
@@ -58,7 +59,7 @@ namespace MusicRenamerSlin_11_2_2020
                         {
                             var m_allFilesFromDirectory = System.IO.Directory.GetFiles(m_musicFileDialogSlin.SelectedPath); //Gives all the files from the directory
 
-                            mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_allFilesFromDirectory.Length * 10;
+                            mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_allFilesFromDirectory.Length * 10; //Set the maximum of the progressbar
 
                             mainFormSlin.LoggerSlin("Searching for Audio Files...");
 
@@ -73,7 +74,7 @@ namespace MusicRenamerSlin_11_2_2020
                                     audioFilesSlin.Add(new AudioFileSlin(m_singleSelectedFileSlin));
                                 }
 
-                                mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10;
+                                mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10; //Update progressbar
                             }
 
                             mainFormSlin.LoggerSlin("Files added");
@@ -92,7 +93,7 @@ namespace MusicRenamerSlin_11_2_2020
 
                         if (m_musicFileDialogSlin.ShowDialog() == DialogResult.OK)
                         {
-                            mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_musicFileDialogSlin.FileNames.Length * 10;
+                            mainFormSlin.pgbSelectingMusicProgresSlin.Maximum = m_musicFileDialogSlin.FileNames.Length * 10; //Set the maximum of the progressbar
 
                             mainFormSlin.LoggerSlin("Adding Files...");
 
@@ -100,7 +101,7 @@ namespace MusicRenamerSlin_11_2_2020
                             foreach (String m_singleSelectedFileSlin in m_musicFileDialogSlin.FileNames)
                             {
                                 audioFilesSlin.Add(new AudioFileSlin(m_singleSelectedFileSlin));
-                                mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10;
+                                mainFormSlin.pgbSelectingMusicProgresSlin.Value = mainFormSlin.pgbSelectingMusicProgresSlin.Value + 10; //Update the progressbar
                             }
 
                             mainFormSlin.LoggerSlin("Files added");
@@ -129,6 +130,7 @@ namespace MusicRenamerSlin_11_2_2020
         private bool CheckRenameRequirementsSlin(AudioFileSlin a_audioFileSlin)
         {
             // Check if all the data is filled in. If not then a Music Recognision API is required.
+            Console.WriteLine(a_audioFileSlin.tagDataFromFilesSlin);
             if (a_audioFileSlin.tagDataFromFilesSlin.Contains(null))
             {
                 return false;
@@ -164,6 +166,7 @@ namespace MusicRenamerSlin_11_2_2020
                     {
                         var thread1 = new Thread(() => MusicRecognisionSlin(m_fileSlin, a_orderListSlin));
                         thread1.Start();
+                        thread1.Join();
                     }
 
                     //Check if the rename can be done
@@ -178,7 +181,8 @@ namespace MusicRenamerSlin_11_2_2020
                         if (m_renameStatus)
                         {
                             m_successRenamesSlin++;
-                        } else
+                        } 
+                        else
                         {
                             mainFormSlin.LoggerSlin(m_fileSlin.GetNewAudioFileNameSlin() + " Could not be renamed. Check if there is maybe a file with the same name in the folder.");
                         }
@@ -215,6 +219,8 @@ namespace MusicRenamerSlin_11_2_2020
                     }
                 }
             }
+
+            a_musicFileSlin.tagDataFromFilesSlin = m_fileDataSlin;
         }
 
         private bool Id3TagReaderSlin(AudioFileSlin a_audioFileSlin, List<string> a_orderListSlin)

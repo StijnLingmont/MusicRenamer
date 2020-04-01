@@ -58,7 +58,8 @@ namespace MusicRenamerSlin_11_2_2020
             }
             else if(a_dataTypeSlin == "Year" && m_fileDataSlin["release_date"] != null)
             {
-                return m_fileDataSlin["release_date"].ToString();
+                string m_yearSlin = m_fileDataSlin["release_date"].ToString().Substring(0, 4);
+                return m_yearSlin;
             }
             else if(a_dataTypeSlin == "Genres" && m_fileDataSlin["genres"] != null)
             {
@@ -89,7 +90,6 @@ namespace MusicRenamerSlin_11_2_2020
 
             return null;
         }
-
 
         public bool GetStatusSlin()
         {

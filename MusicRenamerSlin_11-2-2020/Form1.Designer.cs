@@ -156,6 +156,7 @@
             // 
             // btnRenameSongsSlin
             // 
+            this.btnRenameSongsSlin.Enabled = false;
             this.btnRenameSongsSlin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRenameSongsSlin.Location = new System.Drawing.Point(6, 19);
             this.btnRenameSongsSlin.Name = "btnRenameSongsSlin";
@@ -200,6 +201,7 @@
             // 
             // btnRemoveSongSlin
             // 
+            this.btnRemoveSongSlin.Enabled = false;
             this.btnRemoveSongSlin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveSongSlin.Location = new System.Drawing.Point(9, 427);
             this.btnRemoveSongSlin.Name = "btnRemoveSongSlin";
