@@ -104,6 +104,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Id3TagReader.cs" />
     <Compile Include="MusicRecognision.cs" />
     <Compile Include="OrderList.cs" />
     <Compile Include="Program.cs" />

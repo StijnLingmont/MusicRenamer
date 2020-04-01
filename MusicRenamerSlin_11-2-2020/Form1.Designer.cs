@@ -144,7 +144,8 @@
             "Title",
             "Artists",
             "Year",
-            "Genres"});
+            "Genres",
+            "Duration"});
             this.lsbUnselectedOrderSlin.Location = new System.Drawing.Point(6, 119);
             this.lsbUnselectedOrderSlin.Name = "lsbUnselectedOrderSlin";
             this.lsbUnselectedOrderSlin.Size = new System.Drawing.Size(110, 251);

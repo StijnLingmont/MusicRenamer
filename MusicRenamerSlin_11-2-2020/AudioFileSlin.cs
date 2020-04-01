@@ -15,7 +15,7 @@ namespace MusicRenamerSlin_11_2_2020
 
     class AudioFileSlin
     {
-        private string audioFilePathSlin = "";
+        private string audioFilePathSlin { get; set; }
 
         public List<string> tagDataFromFilesSlin { get; set; } //List of all the information
 
@@ -27,10 +27,12 @@ namespace MusicRenamerSlin_11_2_2020
             this.tagDataFromFilesSlin = new List<string>();
         }
 
-        public bool RenameFileSlin()
+        public bool RenameFileSlin(List<string> a_tagDataSlin)
         {
             try
             {
+                newNameSlin = RenameStringSlin(a_tagDataSlin); //Generate the name of the file
+
                 //Get need informaiton for renaming
                 string m_getFileExtension = Path.GetExtension(audioFilePathSlin);
                 string m_directoySlin = Path.GetDirectoryName(audioFilePathSlin);
@@ -51,6 +53,31 @@ namespace MusicRenamerSlin_11_2_2020
         public string GetNewAudioFileNameSlin()
         {
             return audioFilePathSlin;
+        }
+
+        private string RenameStringSlin(List<string> a_tagDataFromFileSlin)
+        {
+            string m_fileNameSlin = "";
+
+            //Go trough all the data that is used for the file
+            foreach (string m_singleTagDataFromFile in a_tagDataFromFileSlin)
+            {
+                //Check if the data is valid
+                if (m_singleTagDataFromFile != null)
+                {
+                    //Check if it is the first data in the name or not
+                    if (m_fileNameSlin.Length > 0)
+                    {
+                        m_fileNameSlin = m_fileNameSlin + " - " + m_singleTagDataFromFile;
+                    }
+                    else
+                    {
+                        m_fileNameSlin = m_singleTagDataFromFile;
+                    }
+                }
+            }
+
+            return m_fileNameSlin;
         }
     }
 }

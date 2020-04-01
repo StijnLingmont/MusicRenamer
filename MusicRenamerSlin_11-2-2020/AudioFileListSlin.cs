@@ -171,15 +171,16 @@ namespace MusicRenamerSlin_11_2_2020
                     {
                         bool m_renameStatus = false;
                         //Rename files
-
-                        m_fileSlin.newNameSlin = RenameStringSlin(m_fileSlin.tagDataFromFilesSlin);
-                        var thread2 = new Thread(() => {m_renameStatus = m_fileSlin.RenameFileSlin(); });
+                        var thread2 = new Thread(() => {m_renameStatus = m_fileSlin.RenameFileSlin(m_fileSlin.tagDataFromFilesSlin); });
                         thread2.Start();
                         thread2.Join();
 
                         if (m_renameStatus)
                         {
                             m_successRenamesSlin++;
+                        } else
+                        {
+                            mainFormSlin.LoggerSlin(m_fileSlin.GetNewAudioFileNameSlin() + " Could not be renamed. Check if there is maybe a file with the same name in the folder.");
                         }
                     }
                 }
@@ -221,42 +222,9 @@ namespace MusicRenamerSlin_11_2_2020
             try
             {
                 string m_audioFilePathSlin = a_audioFileSlin.GetNewAudioFileNameSlin(); //get the audioFilePath
+                var m_id3TagReaderSlin = new Id3TagReader(m_audioFilePathSlin, a_orderListSlin);
 
-                var tfile = TagLib.File.Create(m_audioFilePathSlin); //Create a File Reading Instance
-
-                foreach (string m_orderItemSlin in a_orderListSlin)
-                {
-                    var m_dataRetrievedSlin = tfile.Tag.GetType().GetProperty(m_orderItemSlin).GetValue(tfile.Tag, null);
-
-                    // Check which data is given and execute the right commans for thats data
-                    if (m_dataRetrievedSlin == null)
-                    {
-                        a_audioFileSlin.tagDataFromFilesSlin.Add(null);
-                    }
-                    else if (m_dataRetrievedSlin.GetType().ToString() == "System.String" || m_dataRetrievedSlin.GetType().ToString() == "System.UInt32")
-                    {
-                        a_audioFileSlin.tagDataFromFilesSlin.Add(m_dataRetrievedSlin.ToString());
-                    }
-                    else if (m_dataRetrievedSlin.GetType().ToString() == "System.String[]")
-                    {
-                        string[] m_dataRetrievedFromArraySlin = (string[])m_dataRetrievedSlin; //Get the retrieved data
-
-                        //Check if the array is filled
-                        if (m_dataRetrievedFromArraySlin.Length > 0)
-                        {
-                            m_dataRetrievedFromArraySlin[0] = m_dataRetrievedFromArraySlin[0].Replace("/", ";");
-                            a_audioFileSlin.tagDataFromFilesSlin.Add(m_dataRetrievedFromArraySlin[0]);
-                        }
-                        else
-                        {
-                            a_audioFileSlin.tagDataFromFilesSlin.Add(null);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("The data from the file is unvalid");
-                    }
-                }
+                a_audioFileSlin.tagDataFromFilesSlin = m_id3TagReaderSlin.GetDataForFile();
 
                 return true;
             }
@@ -266,29 +234,6 @@ namespace MusicRenamerSlin_11_2_2020
                 return false;
             }
 
-        }
-
-        private string RenameStringSlin(List<string> a_tagDataFromFileSlin)
-        {
-            string m_fileNameSlin = "";
-
-            foreach (string m_singleTagDataFromFile in a_tagDataFromFileSlin)
-            {
-                //Check if the data is valid
-                if(m_singleTagDataFromFile != null)
-                {
-                    if (m_fileNameSlin.Length > 0)
-                    {
-                        m_fileNameSlin = m_fileNameSlin + " - " + m_singleTagDataFromFile;
-                    }
-                    else
-                    {
-                        m_fileNameSlin = m_singleTagDataFromFile;
-                    }
-                }
-            }
-
-            return m_fileNameSlin;
         }
     }
 }
