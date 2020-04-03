@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using ARCloud;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace MusicRenamerSlin_11_2_2020
 
         public MusicRecognision()
         {
+            //Set API config
             recogniserApiConfigSlin.Add("host", "identify-eu-west-1.acrcloud.com");
             recogniserApiConfigSlin.Add("access_key", "ffeea9eb549bf53ae78d55a77523a76a");
             recogniserApiConfigSlin.Add("access_secret", "DmWkeTmEURSD6EseTsTOXTUzTaov2IuTtDzR9DqS");

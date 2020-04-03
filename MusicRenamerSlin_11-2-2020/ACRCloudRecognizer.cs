@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicRenamerSlin_11_2_2020
+namespace ARCloud
 {
     class ACRCloudRecognizer
     {

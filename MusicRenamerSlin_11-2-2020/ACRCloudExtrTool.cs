@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicRenamerSlin_11_2_2020
+namespace ARCloud
 {
     class ACRCloudExtrTool
     {
