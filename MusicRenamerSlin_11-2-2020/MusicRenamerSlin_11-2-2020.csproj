@@ -98,19 +98,19 @@
     <Compile Include="ACRCloudStatusCode.cs" />
     <Compile Include="AudioFileListSlin.cs" />
     <Compile Include="AudioFileSlin.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MainSlin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainSlin.Designer.cs">
+      <DependentUpon>MainSlin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Id3TagReader.cs" />
-    <Compile Include="MusicRecognision.cs" />
-    <Compile Include="OrderList.cs" />
+    <Compile Include="Id3TagReaderSlin.cs" />
+    <Compile Include="MusicRecognisionSlin.cs" />
+    <Compile Include="OrderListSlin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainSlin.resx">
+      <DependentUpon>MainSlin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,7 +122,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="MusicRenamerSlin_11-2-2020_TemporaryKey.pfx" />
-    <None Include="MusicRenamer_ClassDiagram.cd" />
+    <None Include="MusicRenamer_ClassDiagramSlin.cd" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -140,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="libacrcloud_extr_tool.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

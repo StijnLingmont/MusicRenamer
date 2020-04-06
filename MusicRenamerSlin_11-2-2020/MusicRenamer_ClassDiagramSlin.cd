@@ -1,24 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MusicRenamerSlin_11_2_2020.OrderList">
-    <Position X="0.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgAAAAAAgIQAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAA=</HashCode>
-      <FileName>OrderList.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="MusicRenamerSlin_11_2_2020.AudioFileSlin">
-    <Position X="4.5" Y="0.5" Width="1.5" />
+    <Position X="3.25" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAABAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAAAABAAAAAAAAAAAAAAAIAAAAhAAgAAAAAAAA=</HashCode>
       <FileName>AudioFileSlin.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MusicRenamerSlin_11_2_2020.AudioFileListSlin">
-    <Position X="2.5" Y="0.5" Width="1.5" />
+  <Class Name="MusicRenamerSlin_11_2_2020.OrderListSlin">
+    <Position X="5.75" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAQAACAgAAAAAAAAAAIACAAAAAQAAIAEACAAAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAgIQAAAAAAAAAAAAAAAAIAAAAAAQAgAAAAAA=</HashCode>
+      <FileName>OrderListSlin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicRenamerSlin_11_2_2020.AudioFileListSlin">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAACCgAAAAEAAAAAAACAAAAAQAAIAEASAAAAAAAA=</HashCode>
       <FileName>AudioFileListSlin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicRenamerSlin_11_2_2020.MusicRecognisionSlin">
+    <Position X="8.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAABBAAAAAAEAAAAAAAAAIAAgAAAAAAA=</HashCode>
+      <FileName>MusicRecognisionSlin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MusicRenamerSlin_11_2_2020.Id3TagReaderSlin">
+    <Position X="11" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAEAAACAAAAAAAAAAAAAAAACAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Id3TagReaderSlin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
